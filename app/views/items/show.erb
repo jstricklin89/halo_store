@@ -5,7 +5,3 @@ some other stuff
 <h2><%= @item.name %></h2>
 <p><%= @item.description %></p>
 <p><%= @item.price %></p>
-<div><a href='/items/<%= @item.id %>/edit'> Edit</a> <a href='/items'> All item</a></div>
-<%= form_tag item_path(@item.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@item.name}" %>
-<% end %>
