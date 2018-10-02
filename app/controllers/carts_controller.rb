@@ -3,6 +3,6 @@ class CartsController < ApplicationController
     end
 
     def show
-        @cart = Cart.find(params[:cart.id])
+        # @cart = Cart.find(params[:cart.id])
     end
 end

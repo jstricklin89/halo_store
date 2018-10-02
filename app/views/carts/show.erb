@@ -1,1 +1,10 @@
-<br> Cart show page
+<br><%= @cart = Cart.first %>
+<h1><%= @cart.user.name %></h1>
+
+<%= @cart.cart_items.each do |ci| %>
+  <h3><%= ci.item.name %></h3>
+  <p><%= ci.item.description %></p>
+  <p>$ <%= '%.2f' % (ci.item.price) %></p>
+<% end %>
+
+<h4><%= link_to "Go back to all Items", '/items' %></h4><br>
