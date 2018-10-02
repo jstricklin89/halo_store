@@ -1,13 +1,13 @@
-<h1>Shop Halo</h1>
-
-<br />
-
+<h1>Shop Halo Online Store</h1>
+<br/>
   <thead>
     <tr>
-      <h2>Item</h2>
-    <br/>
+      <h2>All Items</h2>
+    <div>
     <% @items.each do |item| %>
       <h3><%= link_to item.name, item_path(item) %></h3>
-      <%= item.description %>
+      <h4><%= item.category.name %></h4>
+      <p><%= item.description %></p>
     <% end %>
+    </div> 
 </table>
