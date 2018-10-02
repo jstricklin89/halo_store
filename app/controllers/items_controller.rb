@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
     def index
         if params[:name]
-            @items = Item.where('name LIKE ?', "%{params[:name]}%")
+            @items = Item.select {|item| item.name.downcase.include?(params[:name].downcase)}
         else
         @items = Item.all
         end
@@ -12,18 +12,13 @@ class ItemsController < ApplicationController
         @item = Item.find(params[:id])
     end
 
-    # def search
-        # if params[:category_id]
-        #     @items = Item.all.select do |item|
-        #         item.category_id == params[:category_id].to_i
-        #     end
-    #     @items = Item.all.select do |item|
-            
-    #     if params[:query]
-    #             item.name.downcase == params[:query].downcase
-    #         end
-    #     end
-    #     render :index
-    # end
+    def search
+        if params[:category_id]
+            @items = Item.all.select do |item|
+                item.category_id == params[:category_id].to_i
+            end
+        end
+        render :index
+    end
 end
 
