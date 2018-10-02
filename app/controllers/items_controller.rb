@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
     def index
         if params[:name]
-            @items = Item.where('name LIKE ?', "%{params[:name]}%")
+            @items = Item.select {|}
         else
         @items = Item.all
         end
