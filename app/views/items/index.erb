@@ -5,19 +5,23 @@
       <h2>All Items</h2>
       <h4><%= link_to "Go back to all Items", '/items' %></h4><br>
       
-      <%= form_tag("/search", method: "get") do %>
-      <%= label_tag(:query, "Search by Name:") %>
-      <%= text_field_tag(:query) %><br>
-      <%= submit_tag("Search") %>
+      <%#= form_tag("/search", method: "get") do %>
+      <%#= label_tag(:query, "Search by Name:") %>
+      <%#= text_field_tag(:query) %><br>
+      <%#= submit_tag("Search") %>
+<%# end %>
+
+<%= form_tag items_path, method: :get do %>
+Item Name<%= search_field_tag :item %>
+<%= submit_tag 'Search' %>
 <% end %>
 
 
-
-<%= form_tag("/search", method: "get") do %>
-      <%= label_tag("Search by Category:") %>
-      <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
-      <%= submit_tag("Search") %>
-<% end %>
+<%#= form_tag("/search", method: "get") do %>
+      <%#= label_tag("Search by Category:") %>
+      <%#= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
+      <%#= submit_tag("Search") %>
+<%# end %>
 
   
 
