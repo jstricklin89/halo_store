@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   resources :carts
   resources :users
   root to: 'pages#index'
+  root 'application#hello'
+  get '/login' => 'users#new'
+  post '/login' => 'users#create'
+  post '/logout' => 'users#destroy'
 end

@@ -1,7 +1,16 @@
-<h1>Halo Store</h1>
+<h1>Hello, <%= session[:name] %>.</h1>
+
+
+<h2>Halo Store</h2>
 
 <h3>Categories</h3>
 <% Category.all.each do |c| %>
   <%= c.name %>
+<% end %>
+<br/>
+
+
+<%= form_tag ({controller: 'users', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
 <% end %>
 
