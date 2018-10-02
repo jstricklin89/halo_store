@@ -4,8 +4,8 @@
 <h2>Halo Store</h2>
 
 <h3>Categories</h3>
-<% Category.all.each do |c| %>
-  <%= c.name %>
+<% @categories.each do |c| %>
+  <%= link_to 'c.name', c_path(c) %>
 <% end %>
 <br/>
 
