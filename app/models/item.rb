@@ -9,4 +9,8 @@ class Item < ApplicationRecord
             item.name
         end
     end
+
+    def item_all
+        Item.all
+    end
 end

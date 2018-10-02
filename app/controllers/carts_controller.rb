@@ -1,5 +1,21 @@
 class CartsController < ApplicationController
+    
+    
+    def index
 
-  def show
-  end
+    end
+
+
+    def new
+
+    end
+
+
+    def create
+
+    end
+
+    def show
+
+    end
 end
