@@ -5,8 +5,8 @@ class CartItemsController < ApplicationController
     end
     
     def add_item_to_cart
-        CartItem.create!(cart_id: 1, item_id: params[:item_id], quantity: 1)
-        
+        CartItem.create!(cart_id: session[:cart_id], item_id: params[:item_id], quantity: 1)
+
         redirect_to items_path
     end
         
@@ -33,7 +33,7 @@ class CartItemsController < ApplicationController
       redirect_to edit_cart_url
     end
 
->>>>>>> refs/remotes/origin/master
+
     private
 
     def cart_item_params

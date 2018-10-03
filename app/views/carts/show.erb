@@ -1,0 +1,28 @@
+
+<table>
+  <thead>
+    <tr>
+    <h2>Invoice</h2>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+ <tbody> 
+<% @cart.cart_items.each do |cart_items| %>
+    <tr>
+        <td> <%= cart_items.item.name %> </td><br>
+        <td> <%= cart_items.quantity %> </td><br>
+        <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
+        </tr>
+    <% end %>
+    <td>Your total is: $<%= '%.2f' % session[:total].sum %><td>
+    </tbody>
+</table>
+
+<%= link_to submit_tag("Checkout"), @cart, method: :delete %>
+
+
+
+
+  

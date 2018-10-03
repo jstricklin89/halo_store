@@ -1,23 +1,29 @@
 class CartsController < ApplicationController
     def index
     end
-
+    
     def edit 
-        
-        if @cart = Cart.find(params[:id])
+        session[:total] = []
+        if session[:cart_id] > 0
+            @cart = Cart.find(session[:cart_id])
             @cart_items = CartItem.all
-        else Cart.create(user_id: params[:user_id])
+        else session[:cart_id] == nil
+            Cart.create(user_id: session[:user_id])
             @cart_items = CartItem.all
         end
     end
 
-    def edit
-        @cart = Cart.find_by_id(params[:id])
+    def show
+        @cart = Cart.find(session[:cart_id])
         @cart_items = CartItem.all
     end
 
     def destroy
         Cart.find(params[:id]).destroy
+        session[:cart_id] = nil
+        session[:total] = nil
+        cart = Cart.create(user_id: session[:user_id])
+        session[:cart_id] = cart.id
     redirect_to items_url
     end
 

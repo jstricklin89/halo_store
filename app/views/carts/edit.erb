@@ -1,22 +1,31 @@
 <tr>
-  <% @cart.cart_items.each do |cart_items| %>    
+  <% @cart.cart_items.each do |cart_items| %>
     <%= form_for cart_items do |cart_item| %>
       <td> <%= cart_item.hidden_field :cart_id %> </td><br>
-      Item Name:
-      <td> <%= cart_items.item.name %> </td><br>
-      <td> <%= cart_item.hidden_field :item_id %> </td>
-      Item Price:
-      <td> <%= '%.2f' % cart_items.item.price %> </td><br>
-      <td> <%= cart_item.text_field :quantity %> </td>
-      <td> <%= cart_item.submit %> </td><br>
-      <%= link_to submit_tag("Delete from Cart"), cart_items, method: :delete, data: { confirm: "Really?" } %>
-    <% end %>
-  <% end %>   
+            Item Name:
+        <h4><td> <%= cart_items.item.name %> </td><br></h4>
+        <td> <%= cart_item.hidden_field :item_id %> </td>
+            Item Price:
+        <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
+        <td> <%= cart_item.text_field :quantity %> </td>
+        <td> <% session[:total] << (cart_items.item.price * cart_items.quantity)  %> </td>
+        <%= Transaction.create(user_id: session[:user_id], item_id: cart_item.item.id, quantity: item.quantity) %>
+        <td> <%= cart_item.submit %> </td><br>
+          <%= link_to submit_tag("Delete from Cart"), cart_items, method: :delete, data: { confirm: "Really?" } %>
+        <br>
+        <br>
+        <br>
+      <% end %>
+    <% end %>   
+        <%= link_to submit_tag("Checkout"), @cart, method: :get %>
+        
 </tr>
 <br><%= link_to submit_tag("Delete all from Cart"), @cart, method: :delete, data: { confirm: "Really?" } %>  
-
-
+<br>
+<h4>$ <%= '%.2f' % session[:total].sum %></h4> 
 <h4><%= link_to "BACK TO ALL ITEMS", '/items' %></h4><br>
+
+
 
 
 

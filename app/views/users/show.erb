@@ -1,0 +1,39 @@
+<% if @current_user %>
+  <h1><%= @user.username %></h1>
+
+  My secret is <%= @user.secret %>
+
+  <%= @user.nickname %>
+
+  My Purchases:
+
+<table>
+  <thead>
+    <tr>
+    <h2>Invoice</h2>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+ <tbody> 
+ <% if User.first.transactions! %>
+<% @transactions.item.name.each do |item| %>
+    <tr>
+        <td> <%= item.item.name %> </td><br>
+        <td> <%= item.quantity %> </td><br>
+        <td>$ <%= '%.2f' % (item.item.price * item.quantity) %> </td><br>
+        </tr>
+        <% end %>
+        <% else %>
+        <%= "You have no transactions" %>
+    <% end %>
+    </tbody>
+</table>
+
+
+
+  <%= button_to "Logout", '/sessions', method: :delete %>
+<% else %>
+  Access Denied
+<% end %>
