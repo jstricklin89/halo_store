@@ -1,19 +1,19 @@
-<h1><%= @cart.user.name %></h1>
-
-  
-  <% @cart_items.each do |ci| %>
-  <% if ci.cart_id == @cart.id %>
-    <h3><%= ci.item.name %></h3> 
-    <p>Price: $ <%= '%.2f' % (ci.item.price) %></p>
-    <%= form_with model: ci do |f| %>
-      <%= f.label 'Quantity:' %>
-      <%= f.number_field :quantity, value: ci.quantity %>
-      <%= f.submit 'Update Qty' %>
-      <br/>
-      <%= link_to submit_tag("Delete"), ci, method: :delete, data: { confirm: "Really?" } %>
-      <% end %><br><br>
+<tr>
+  <% @cart.cart_items.each do |cart_items| %>    
+    <%= form_for cart_items do |cart_item| %>
+      <td> <%= cart_item.hidden_field :cart_id %> </td><br>
+      Item Name:
+      <td> <%= cart_items.item.name %> </td><br>
+      <td> <%= cart_item.hidden_field :item_id %> </td>
+      Item Price:
+      <td> <%= '%.2f' % cart_items.item.price %> </td><br>
+      <td> <%= cart_item.text_field :quantity %> </td>
+      <td> <%= cart_item.submit %> </td><br>
+      <%= link_to submit_tag("Delete from Cart"), cart_items, method: :delete, data: { confirm: "Really?" } %>
     <% end %>
-  <% end %>
+  <% end %>   
+</tr>
+<br><%= link_to submit_tag("Delete all from Cart"), @cart, method: :delete, data: { confirm: "Really?" } %>  
 
 
 <h4><%= link_to "BACK TO ALL ITEMS", '/items' %></h4><br>

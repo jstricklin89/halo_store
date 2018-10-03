@@ -1,4 +1,4 @@
-class CartItemsController < ApplicationController
+class CartItemsController < ApplicationController 
     
     def show
         @cartitem = CartItem.find(params[:id])
@@ -21,17 +21,19 @@ class CartItemsController < ApplicationController
     end
 
     def update
-        byebug
-        @cartitem = CartItem.find_by(cart_id: params[:id])
-        @cartitem.update(quantity: params[:cart_item][:quantity])
-        redirect_to edit_cart_url
-    end
-    
+      @cart_item = CartItem.find_by(cart_id: params[:cart_item][:cart_id], item_id: params[:cart_item][:item_id])
+  
+      @cart_item.update(cart_item_params)
+      @cart_item.save
+      redirect_to edit_cart_url(@cart_item.cart)
+  end
+
     def destroy
-        CartItem.find(params[:id]).destroy
-        redirect_to edit_cart_url
+      CartItem.find(params[:id]).destroy
+      redirect_to edit_cart_url
     end
-    
+
+>>>>>>> refs/remotes/origin/master
     private
 
     def cart_item_params
