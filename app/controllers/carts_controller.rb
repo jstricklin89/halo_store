@@ -1,10 +1,13 @@
 class CartsController < ApplicationController
     def index
     end
-
+    
+    def show
+    end
+    
     def edit 
-        
-        if @cart = Cart.find(params[:id])
+        @total = []
+        if @cart = Cart.find(session[:cart_id])
             @cart_items = CartItem.all
         else Cart.create(user_id: params[:user_id])
             @cart_items = CartItem.all

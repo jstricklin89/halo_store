@@ -4,8 +4,8 @@ clothing =  Category.create(name: "Clothing")
 accessories =  Category.create(name: "Accessories")
 figurines =  Category.create(name: "Figurines")
 
-john = User.create(name: "John", nickname: "Naeblis")
-jonathan = User.create(name: "Jonathan", nickname: "HeadyT0pper")
+john = User.create(username: "John", password_digest: "halofive", nickname: "Naeblis", secret: "Halo 5")
+jonathan = User.create(username: "Jonathan", password_digest: "halothree", nickname: "HeadyT0pper", secret: "Halo 3")
 
 item1 = Item.create(name: "HALO 6in CRACKED VISOR MASTER CHIEF", price: 17.00, description: "Officially licensed by Halo; designed and created by J!NX Master Chief Vinyl Action Figure with Battle Damage from Halo video game
 6in tall figure is fully poseable with 6 points of articulation on arms Figure stand by itself, legs do not articulate Weapons snap into figures hand", category_id: figurines.id, img_url: "https://www.jinx.com/amazonimage/productimage/6103/99/2/400.jpg", size: nil, color: "Green")

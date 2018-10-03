@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
     end
 
     def add_item_to_cart
-        CartItem.create!(cart_id: 1, item_id: params[:item_id], quantity: 1)
+        CartItem.create!(cart_id: session[:cart_id], item_id: params[:item_id], quantity: 1)
 
         redirect_to items_path
     end
