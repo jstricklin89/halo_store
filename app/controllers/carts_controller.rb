@@ -2,8 +2,13 @@ class CartsController < ApplicationController
     def index
     end
 
-    def show
-        # @cart = Cart.find(params[:cart.id])
+    def edit 
+        
+        if @cart = Cart.find(params[:id])
+            @cart_items = CartItem.all
+        else Cart.create(user_id: params[:user_id])
+            @cart_items = CartItem.all
+        end
     end
 
     def update
@@ -18,10 +23,6 @@ class CartsController < ApplicationController
         #   render :edit
         # end
         redirect_to carts_edit_url
-    end
-
-    def update_qty
-        CartItem.update(quantity: params)
     end
 
     def destroy

@@ -1,9 +1,4 @@
-class CartItemsController < ApplicationController
-  def destroy
-    CartItem.find(params[:id]).destroy
-    redirect_to edit_cart_url
-  end
-end 
+class CartItemsController < ApplicationController 
     
     def show
         @cartitem = CartItem.find(params[:id])
@@ -25,9 +20,22 @@ end
         end
     end
 
-        private
+    def update
+      @cart_item = CartItem.find_by(cart_id: params[:cart_item][:cart_id], item_id: params[:cart_item][:item_id])
+  
+      @cart_item.update(cart_item_params)
+      @cart_item.save
+      redirect_to edit_cart_url(@cart_item.cart)
+  end
+
+    def destroy
+      CartItem.find(params[:id]).destroy
+      redirect_to edit_cart_url
+    end
+
+    private
 
     def cart_item_params
-        params.require(:cartitem).permit(:cart_id, :item_id, :quantity)
+        params.require(:cart_item).permit(:cart_id, :item_id, :quantity)
     end
 end
