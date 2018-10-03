@@ -12,21 +12,37 @@
   <%= submit_tag 'Search' %>
 <% end %>
 
-
 <%= form_tag("/search", method: "get") do %>
       <%= label_tag("Search by Category:") %>
       <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
       <%= submit_tag("Search") %>
 <% end %>
 
+<% if @sorter == "high"%>
+      <% Item.items_by_price.each do |item| %>
+        <h3><%= link_to item.name, item_path(item) %></h3>
+        <h4><%= item.category.name %></h4>
+        <p><%= item.description %></p>
+        <p><%= item.price %></p>
+      <% end %>
+<% end %>
+
     <div>
+  <% if @sorter == "name"%>
     <% @items.each do |item| %>
       <h3><%= link_to item.name, item_path(item) %></h3>
       <h4><%= item.category.name %></h4>
       <p><%= item.description %></p>
+      <p><%= item.price %></p>
     <% end %>
+<% end %>
+    
     </div> 
 </table>
+
+
+
+
 
 
 
