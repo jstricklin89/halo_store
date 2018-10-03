@@ -1,5 +1,30 @@
 class CartItemsController < ApplicationController
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     def show
         @cartitem = CartItem.find(params[:id])
     end
