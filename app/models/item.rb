@@ -13,4 +13,12 @@ class Item < ApplicationRecord
     def item_all
         Item.all
     end
+
+    def self.items_by_price
+        Item.all.sort_by {|item| item.price}    
+    end 
+
+    def self.items_by_price_reverse
+        Item.all.sort_by {|item| item.price}.reverse    
+    end 
 end
