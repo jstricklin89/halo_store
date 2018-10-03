@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
     def index
         if params[:name]
             @items = Item.select {|item| item.name.downcase.include?(params[:name].downcase)}
-            @sorter = "name"
         else
             @items = Item.all
             

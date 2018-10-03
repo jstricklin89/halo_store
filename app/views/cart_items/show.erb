@@ -1,0 +1,12 @@
+<br>
+<img src=<%= @cartitem.item.img_url %>>
+<h2><%= @cartitem.item.name %></h2>
+<p><%= @cartitem.item.description %></p>
+<p>$ <%= '%.2f' % (@cartitem.item.price) %></p>
+
+<div><a href='/cart_items/<%= @cartitem.id %>/edit'> EDIT cartitem</a></div> 
+<div><a href='/cart_items'> GO BACK TO ALL CART ITEMS</a></div>
+
+<%= form_tag cart_item_path(@cartitem.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@cartitem.item.name}" %>
+<% end %>

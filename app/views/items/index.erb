@@ -18,27 +18,19 @@
       <%= submit_tag("Search") %>
 <% end %>
 
-<% if @sorter == "high"%>
-      <% Item.items_by_price.each do |item| %>
-        <h3><%= link_to item.name, item_path(item) %></h3>
-        <h4><%= item.category.name %></h4>
-        <p><%= item.description %></p>
-        <p><%= item.price %></p>
-      <% end %>
-<% end %>
-
     <div>
-  <% if @sorter == "name"%>
-    <% @items.each do |item| %>
-      <h3><%= link_to item.name, item_path(item) %></h3>
-      <h4><%= item.category.name %></h4>
-      <p><%= item.description %></p>
-      <p><%= item.price %></p>
-    <% end %>
-<% end %>
+  <% @items.each do |item| %>
+    <h3><%= link_to item.name, item_path(item) %></h3>
+    <h4><%= item.category.name %></h4>
+    <p><%= item.description %></p>
+    <p><%= item.price %></p>
+    
+  <% end %>
     
     </div> 
 </table>
+
+# push item into cart
 
 
 

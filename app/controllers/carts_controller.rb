@@ -20,6 +20,10 @@ class CartsController < ApplicationController
         redirect_to carts_edit_url
     end
 
+    def update_qty
+        CartItem.update(quantity: params)
+    end
+
     def destroy
         Cart.find(params[:id]).destroy
     redirect_to items_url
