@@ -16,6 +16,7 @@
 </tr>
 <br><%= link_to submit_tag("Delete all from Cart"), @cart, method: :delete, data: { confirm: "Really?" } %>  
 <br>
+<br><%= link_to submit_tag("Checkout"), @cart, method: :get %>
 <h4>$ <%= '%.2f' % @total.sum %></h4>
 <h4><%= link_to "BACK TO ALL ITEMS", '/items' %></h4><br>
 

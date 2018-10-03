@@ -5,4 +5,6 @@ class User < ApplicationRecord
     has_many :items, through: :cart_items
     has_many :transactions
     has_many :items, through: :transactions
+
+    validates :username, presence: true
 end

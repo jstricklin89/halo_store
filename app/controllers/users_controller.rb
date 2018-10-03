@@ -11,13 +11,13 @@ class UsersController < ApplicationController
     
       def create
         user = User.new(user_params)
-        Cart.create(user_id: user.id)
         if user.valid?
           user.save
+          Cart.create(user_id: user.id)
           session[:user_id] = user.id
           redirect_to user
         else
-          flash[:error] = 'Passwords dont match'
+          flash[:error]
           redirect_to new_user_path
         end
       end
