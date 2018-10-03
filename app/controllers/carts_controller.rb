@@ -5,4 +5,10 @@ class CartsController < ApplicationController
     def show
         # @cart = Cart.find(params[:cart.id])
     end
+
+    def destroy
+        Cart.find(params[:id]).destroy
+    redirect_to items_url
+    end
+
 end
