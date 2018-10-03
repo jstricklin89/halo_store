@@ -3,6 +3,7 @@
 <h2><%= @item.name %></h2>
 <p><%= @item.description %></p>
 <p>$ <%= '%.2f' % (@item.price) %></p>
+<p><%= link_to 'add to cart', "/add_to_cart/#{@item.id}" %></p>
 
 <div><a href='/items/<%= @item.id %>/edit'> EDIT ITEM</a></div> 
 <div><a href='/items'> GO BACK TO ALL ITEMS</a></div>
