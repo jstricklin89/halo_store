@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :items
   resources :carts
   resources :users
-  resources :cart_items
   resources :categories
   resources :sessions, only: [:create]
   get 'sessions/new'
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   root 'application#hello'
   
+  get '/checkout' => 'carts#show'
   get '/search' => 'items#search'
   get '/add_to_cart/:item_id' => 'cart_items#add_item_to_cart' 
  

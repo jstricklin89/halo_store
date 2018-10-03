@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
     def show
         @cartitem = CartItem.find(params[:id])
     end
-
+    
     def add_item_to_cart
         CartItem.create!(cart_id: session[:cart_id], item_id: params[:item_id], quantity: 1)
 
@@ -32,6 +32,7 @@ class CartItemsController < ApplicationController
       CartItem.find(params[:id]).destroy
       redirect_to edit_cart_url
     end
+
 
     private
 
