@@ -6,23 +6,24 @@ class CartsController < ApplicationController
         # @cart = Cart.find(params[:cart.id])
     end
 
-    def update
-        @cart_item = CartItem.find(params[:id])
-    
-        @cart_item.update(cart_item_params)
-        @cart_item.save
-        # if @cart_item.valid?
-        #   @cart_item.save
-        #   redirect_to @cart_item
-        # else
-        #   render :edit
-        # end
-        redirect_to carts_edit_url
+    def edit
+        @cart = Cart.find_by_id(params[:id])
+        @cart_items = CartItem.all
     end
 
-    def update_qty
-        CartItem.update(quantity: params)
-    end
+    # def update
+    #     @cart_item = CartItem.find(cart_item_params)
+    
+    #     @cart_item.update(cart_item_params)
+    #     @cart_item.save
+    #     # if @cart_item.valid?
+    #     #   @cart_item.save
+    #     #   redirect_to @cart_item
+    #     # else
+    #     #   render :edit
+    #     # end
+    #     redirect_to carts_edit_url
+    # end
 
     def destroy
         Cart.find(params[:id]).destroy

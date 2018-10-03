@@ -1,16 +1,19 @@
-<br><% @cart = Cart.first %>
 <h1><%= @cart.user.name %></h1>
 
-<%= form_tag("/carts/#{@cart.id}", method: "put") do %>
-  <% @cart.cart_items.each do |ci| %>
+  
+  <% @cart_items.each do |ci| %>
+  <% if ci.cart_id == @cart.id %>
     <h3><%= ci.item.name %></h3> 
     <p>Price: $ <%= '%.2f' % (ci.item.price) %></p>
-    <%= label_tag 'Quantity:' %>
-    <%= number_field_tag 'quantity', ci.quantity %>
-    <%= submit_tag("Update Qty") %>
-    <%= link_to submit_tag("Delete"), ci, method: :delete, data: { confirm: "Really?" } %>
-  <% end %><br><br>
-<% end %>
+    <%= form_with model: ci do |f| %>
+      <%= f.label 'Quantity:' %>
+      <%= f.number_field :quantity, value: ci.quantity %>
+      <%= f.submit 'Update Qty' %>
+      <br/>
+      <%= link_to submit_tag("Delete"), ci, method: :delete, data: { confirm: "Really?" } %>
+      <% end %><br><br>
+    <% end %>
+  <% end %>
 
 
 <h4><%= link_to "BACK TO ALL ITEMS", '/items' %></h4><br>
