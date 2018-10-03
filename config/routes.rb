@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cart_items
   resources :items
   resources :carts
   resources :users
@@ -9,5 +10,5 @@ Rails.application.routes.draw do
   post '/login' => 'users#create'
   post '/logout' => 'users#destroy'
   get '/search' => 'items#search'
- 
+  post '/carts/:id/edit' => 'cart_items#destroy'
 end

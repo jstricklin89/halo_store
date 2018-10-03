@@ -3,13 +3,16 @@
 
 <%= form_tag("/carts/#{@cart.id}", method: "put") do %>
   <% @cart.cart_items.each do |ci| %>
-    <h3><%= ci.item.name %></h3>  
+    <h3><%= ci.item.name %></h3> 
     <p>Price: $ <%= '%.2f' % (ci.item.price) %></p>
     <%= label_tag 'Quantity:' %>
     <%= number_field_tag 'quantity', ci.quantity %>
+    <%= submit_tag("Update Qty") %>
+    <%= link_to submit_tag("Delete"), ci, method: :delete, data: { confirm: "Really?" } %>
   <% end %><br><br>
-  <%= submit_tag("Update Cart") %>
 <% end %>
+
+
 
 <h4><%= link_to "BACK TO ALL ITEMS", '/items' %></h4><br>
 
