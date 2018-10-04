@@ -14,8 +14,9 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.valid?
           user.save
-          Cart.create(user_id: user.id)
+          cart = Cart.create(user_id: user.id)
           session[:user_id] = user.id
+          session[:cart_id] = cart.id
           redirect_to user
         else
           flash[:error] = 'Please try again. Requirements: Must have username. Must have password between 3-20 characters.'

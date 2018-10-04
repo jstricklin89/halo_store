@@ -1,10 +1,27 @@
+
+<br><br><br>
+
+<br><% item1 = @items.sample %><%= link_to "#{item1.name}", "items/#{item1.id}" %><br>
+<img src=<%= item1.img_url %>>
+<br><% item2 = @items.sample %><%= link_to "#{item2.name}", "items/#{item2.id}" %><br>
+<img src=<%= item2.img_url %>>
+<br><% item3 = @items.sample %><%= link_to "#{item3.name}", "items/#{item3.id}" %><br>
+<img src=<%= item3.img_url %>>
+<br><% item4 = @items.sample %><%= link_to "#{item4.name}", "items/#{item4.id}" %><br>
+<img src=<%= item4.img_url %>>
+<br><% item5 = @items.sample %><%= link_to "#{item5.name}", "items/#{item5.id}" %><br>
+<img src=<%= item5.img_url %>>
+<br><% item6 = @items.sample %><%= link_to "#{item6.name}", "items/#{item6.id}" %><br>
+<img src=<%= item6.img_url %>>
+
+
+
+
+
 <% if session[:username] != nil%>
 <h1>Hello, <%= session[:username] %>.</h1>
-<% else %>
-<br><%= link_to "Sign-up", new_user_path %>
-<% end %>
-
-<br/>
-
   <input type=submit value='logout'>
+<% else %>
+<br><%= link_to "Sign-up", new_user_path %><br>
+<% end %>
 
