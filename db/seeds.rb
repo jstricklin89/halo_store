@@ -38,6 +38,11 @@ cart_item8 = CartItem.create(cart_id: jonathan_cart.id, item_id: item1.id, quant
 cart_item9 = CartItem.create(cart_id: jonathan_cart.id, item_id: item2.id, quantity: 3)
 cart_item0 = CartItem.create(cart_id: jonathan_cart.id, item_id: item3.id, quantity: 8)
 
+review = Review.create(title: "It's good", user_id: 1, item_id: 1, rating: 5, review: "OMG LIKE IT IS SOOOOO GOOD")
+review = Review.create(title: "It's good", user_id: 1, item_id: 2, rating: 5, review: "OMG LIKE IT IS SOOOOO GOOD")
+review = Review.create(title: "It's good", user_id: 1, item_id: 3, rating: 5, review: "OMG LIKE IT IS SOOOOO GOOD")
+review = Review.create(title: "It's good", user_id: 1, item_id: 4, rating: 5, review: "OMG LIKE IT IS SOOOOO GOOD")
+
 Transaction.create(user_id: 1, item_id: 1, quantity: 5)
 Transaction.create(user_id: 1, item_id: 2, quantity: 1)
 Transaction.create(user_id: 1, item_id: 3, quantity: 2)

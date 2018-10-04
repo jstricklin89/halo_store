@@ -5,9 +5,25 @@
 <p>$ <%= '%.2f' % (@item.price) %></p>
 <p><%= link_to 'add to cart', "/add_to_cart/#{@item.id}" %></p>
 
-<div><a href='/items/<%= @item.id %>/edit'> EDIT ITEM</a></div> 
-<div><a href='/items'> GO BACK TO ALL ITEMS</a></div>
-
-<%= form_tag item_path(@item.id), method: "delete" do %>
-  <%= submit_tag "Delete #{@item.name}" %>
+<% @item.reviews.each do |review| %>
+<br>------------------------------------------------------------------<br>
+<br><%= review.user.nickname %>
+<%= "Review: #{review.title}." + " " + "Rating: #{review.rating}" %>
+<br><%= review.review %>
+<br>------------------------------------------------------------------<br>
 <% end %>
+
+<br><br>
+<%= "Write a review!" %>
+<br><%= form_with model: Review.new do |f| %>
+  <br><%= f.text_field :title, placeholder: "title" %>
+  <br><%= f.number_field :rating, placeholder: "rating" %>
+  <br><%= f.text_field :review, placeholder: "review" %>
+  <br><%= f.number_field :user_id, value: "#{session[:user_id]}" %>
+  <br><%= f.number_field :item_id, value: "#{@item.id}" %>
+  <br><%= f.submit %>
+<% end %>
+  
+
+<br><br>
+  <div><a href='/items'> GO BACK TO ALL ITEMS</a></div>

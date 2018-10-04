@@ -1,0 +1,14 @@
+<h3>Edit User Form</h3>
+ 
+<%= form_for(@user) do |f|%>
+  <label> New Username:</label><br>
+  <%= f.text_field :username, placeholder: @user.username%><br>
+
+  <label> Nickname:</label><br>
+  <%= f.text_field :nickname, placeholder: @user.nickname%><br>
+
+  <label>secret:</label><br>
+  <%= f.text_field :secret, placeholder: @user.secret%><br>
+
+  <%= f.submit %>
+<% end %>

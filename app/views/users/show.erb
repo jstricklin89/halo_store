@@ -1,11 +1,12 @@
 <% if @current_user %>
-  <h1><%= @user.username %></h1>
+  <h1><%= "Hey, #{@user.username}!" %></h1>
 
-  My secret is <%= @user.secret %>
+  <br><h3>My Nickname: <%= @user.nickname %></h3><br>
 
-  <%= @user.nickname %>
+  <H4>My Secret: <%= @user.secret %><br></H4>
 
-  <br>
+  <br><br>
+  <%= link_to "Edit Profile", edit_user_path(@user) %><br><br>
   <br>My Purchases:
 
  <% if Transaction.all.include?(Transaction.find_by(user_id: session[:user_id])) %>
@@ -33,6 +34,7 @@
   <% else %>
     <%= "You have no transactions" %>
   <% end %>
+
 
 
 
