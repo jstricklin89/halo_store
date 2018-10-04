@@ -1,6 +1,6 @@
 
 <br><br><br>
-<h2>Most Populor Choice:</h2>
+<h2>Most Popular Choice:</h2>
 ---------------------------------------------------------------------------------
  <br><% arr = Transaction.all %> 
  <% freq = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h } %>
@@ -8,8 +8,6 @@
  <img src=<%= freq.max_by { |_, v| v }.first.item.img_url %>><br>
  --------------------------------------------------------------------------------
  <br><br><br><br>
-
-
 <br><% item1 = @items.sample %><%= link_to "#{item1.name}", "items/#{item1.id}" %><br>
 <img src=<%= item1.img_url %>>
 <br><% item2 = @items.sample %><%= link_to "#{item2.name}", "items/#{item2.id}" %><br>

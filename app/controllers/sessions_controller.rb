@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :redirect_to_login_page_if_not_logged_in, except: [:new, :create]
+
   def new
   end
 

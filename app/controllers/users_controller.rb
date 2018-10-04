@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+    before_action :redirect_to_login_page_if_not_logged_in, except: [:new, :show, :create]
+
+    def index
+      redirect_to root
+    end
+
     def show
       @transactions = Transaction.all
         @user = User.find(params[:id])
