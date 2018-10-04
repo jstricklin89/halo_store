@@ -9,8 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <h1>Halo Store</h1>
-<button><a href="/">home</a></button>---<button><a href="/carts/<%= session[:cart_id] %>/edit">Cart</a></button>---<button><a href="/items">items</a></button>---<button><a href="/users/<%= session[:user_id] %>">Profile</a></button>
   <body>
+    <%= render 'layouts/navigation' %>
     <%= yield %>
   </body>
 </html>

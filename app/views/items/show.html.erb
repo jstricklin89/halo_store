@@ -1,5 +1,5 @@
 <br>
-<img src=<%= @item.img_url %>>
+<%= image_tag @item.img_url, class: "img-fluid" %>
 <h2><%= @item.name %></h2>
 <p><%= @item.description %></p>
 <p>$ <%= '%.2f' % (@item.price) %></p>
