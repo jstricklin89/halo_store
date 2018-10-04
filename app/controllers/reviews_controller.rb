@@ -12,11 +12,8 @@ class ReviewsController < ApplicationController
     
     def create
         @review = Review.new(review_params)
-        if @review.save
-            redirect_to "/items/#{params[:item_id]}"
-        else
-            redirect_to "/items/#{params[:item_id]}"
-        end
+        @review.save
+        redirect_to "/items/#{params[:review][:item_id]}"
     end
 
     def destroy
