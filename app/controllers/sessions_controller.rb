@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
       cart = Cart.create(user_id: user.id)
       session[:cart_id] = cart.id
       session[:total] = []
+      session[:username] = user.username
+
       redirect_to user
     else
       flash[:error] = 'Sorry, please try again'
@@ -21,6 +23,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:cart_id] = nil
     session[:total] = nil
+    session[:username] = nil
 
     redirect_to login_path
   end
