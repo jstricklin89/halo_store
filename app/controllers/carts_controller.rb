@@ -1,5 +1,10 @@
 class CartsController < ApplicationController
+    
+    before_action :redirect_to_login_page_if_not_logged_in, except: [:new, :show, :create]
+
     def index
+        redirect_to root
+
     end
     
     def edit 
@@ -14,8 +19,12 @@ class CartsController < ApplicationController
     end
 
     def show
-        @cart = Cart.find(session[:cart_id])
-        @cart_items = CartItem.all
+        if session[:cart_id]
+            @cart = Cart.find(session[:cart_id])
+            @cart_items = CartItem.all
+        else
+            redirect_to login_path
+        end
     end
 
     def destroy
