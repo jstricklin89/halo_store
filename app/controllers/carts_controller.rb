@@ -35,6 +35,14 @@ class CartsController < ApplicationController
     redirect_to items_url
     end
 
+    def self.sum(cart)
+        sum = 0
+        cart.cart_items.each do |item|
+            sum += item.item.price * item.quantity
+        end
+        sum
+    end
+
     private
 
     def cart_params

@@ -2,9 +2,9 @@
   <thead>
     <tr>
     <h2>Invoice</h2>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
+      <th>Name:</th>
+      <th>Quantity:</th>
+      <th>Price:</th>
     </tr>
   </thead>
  <tbody> 
@@ -16,7 +16,7 @@
         </tr>
         <% Transaction.create(user_id: session[:user_id], item_id: cart_items.item.id, quantity: cart_items.quantity) %>
       <% end %>
-    <td>Your total is: $<%= '%.2f' % session[:total].sum %><td>
+    <td>Your total is: $<%= '%.2f' % CartsController.sum(@cart)  %><td>
     </tbody>
 </table>
 

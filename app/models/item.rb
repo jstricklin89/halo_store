@@ -4,6 +4,8 @@ class Item < ApplicationRecord
     has_many :users, through: :carts
     has_many :transactions
     has_many :users, through: :transactions
+    has_many :reviews
+
     belongs_to :category
 
     def category_sort

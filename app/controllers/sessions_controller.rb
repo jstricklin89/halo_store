@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       cart = Cart.create(user_id: user.id)
       session[:cart_id] = cart.id
-      session[:total] = []
       session[:nickname] = user.nickname
 
       redirect_to user

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :cart_items
   resources :items
   resources :carts
   resources :users
+  resources :reviews
   resources :categories
+
   resources :sessions, only: [:create]
   get 'sessions/new'
 
