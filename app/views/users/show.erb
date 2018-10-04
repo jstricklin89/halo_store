@@ -1,4 +1,4 @@
-<% if @current_user %>
+<%# if @current_user %>
   <h1><%= @user.username %></h1>
 
   My secret is <%= @user.secret %>
@@ -17,23 +17,23 @@
     </tr>
   </thead>
  <tbody> 
- <% if User.first.transactions! %>
-<% @transactions.item.name.each do |item| %>
+ <%# if User.first.transactions! %>
+<%# @transactions.item.name.each do |item| %>
     <tr>
-        <td> <%= item.item.name %> </td><br>
-        <td> <%= item.quantity %> </td><br>
-        <td>$ <%= '%.2f' % (item.item.price * item.quantity) %> </td><br>
+        <td> <%#= item.item.name %> </td><br>
+        <td> <%#= item.quantity %> </td><br>
+        <td>$ <%#= '%.2f' % (item.item.price * item.quantity) %> </td><br>
         </tr>
-        <% end %>
-        <% else %>
-        <%= "You have no transactions" %>
-    <% end %>
+        <%# end %>
+        <%# else %>
+        <%#= "You have no transactions" %>
+    <%# end %>
     </tbody>
 </table>
 
 
 
   <%= button_to "Logout", '/sessions', method: :delete %>
-<% else %>
+<%# else %>
   Access Denied
-<% end %>
+<%# end %>

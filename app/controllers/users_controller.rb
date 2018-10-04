@@ -18,7 +18,7 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect_to user
         else
-          flash[:error]
+          flash[:error] = 'Please try again. Requirements: Must have username. Must have password between 3-20 characters.'
           redirect_to new_user_path
         end
       end

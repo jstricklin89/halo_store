@@ -7,4 +7,6 @@ class User < ApplicationRecord
     has_many :items, through: :transactions
 
     validates :username, presence: true
+    validates :username, length: { minimum: 2 }
+    validates :password, length: { in: 4..20 }
 end
