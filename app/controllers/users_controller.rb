@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def show
       @transactions = Transaction.all
-        @user = User.find(params[:id])
+        @user = User.find(session[:user_id])
         if session[:user_id] == params[:id].to_i
           @current_user = @user
         end
