@@ -1,14 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-  <%#= link_to 'Profile', user_path(session[:user_id]), class: 'navbar-brand' %>
-  <%= link_to 'Items', items_path, class: 'navbar-brand' %>
-  <%= link_to 'Cart', cart_path(session[:cart_id]), class: 'navbar-brand' %>
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light" style="background-color: #C2EFEB;">
+
+  <a href="/" class="margin-left"><%= image_tag("Halo_icon.png", size: "40x40", :alt => "Halo Logo") %></a>
+  <a href="/" class="margin-left"><%= image_tag("Halo_home_button.png", size: "202x35", :alt => "Halo Logo") %></a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    </ul>
+    <ul class="navbar-nav mr-auto"></ul>
+      <%= link_to 'Items', items_path, class: 'navbar-brand' %>
+      <%= link_to 'Profile', "/users/#{session[:user_id]}", class: 'navbar-brand' %>
+      <%= link_to 'Cart', "/carts/#{session[:cart_id]}/edit", class: 'navbar-brand' %>
   </div>
+
 </nav>
