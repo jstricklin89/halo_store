@@ -1,10 +1,26 @@
-<br><br>
-<%= flash[:error] %><br>
-<%= form_with model: User.new do |f| %>
-  <%= f.text_field :username, placeholder: "Username" %>
-  <%= f.text_field :nickname, placeholder: "nickname" %>
-  <%= f.text_field :secret, placeholder: "Secret" %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.password_field :password_confirmation, placeholder: "password_confirmation" %>
-  <%= f.submit %>
-<% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <br><h2 class="text-center">Create New Login</h2>
+          <% if flash[:error] %>
+          <div class="alert alert-warning" role="alert">
+            <%= flash[:error] %><br>
+          </div>
+          <% end %>
+        <%= bootstrap_form_for @user do |f| %>
+          <%= f.text_field :username, placeholder: "username" %>
+          <%= f.text_field :nickname, placeholder: "nickname" %>
+          <%= f.text_field :secret, placeholder: "secret" %>
+          <%= f.password_field :password, placeholder: "password" %>
+          <%= f.password_field :password_confirmation, placeholder: "password confirmation" %>
+          <%= f.submit "Create Login", class: 'form-control login-button' %>
+        <% end %>      
+      </div>
+    </div> 
+  </div>
+
+
+
+
+
+

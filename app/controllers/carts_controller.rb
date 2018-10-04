@@ -4,7 +4,6 @@ class CartsController < ApplicationController
 
     def index
         redirect_to root
-
     end
     
     def edit 
