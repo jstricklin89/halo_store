@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-show page for cart
-=======
-
 <table>
   <thead>
     <tr>
@@ -18,7 +14,8 @@ show page for cart
         <td> <%= cart_items.quantity %> </td><br>
         <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
         </tr>
-    <% end %>
+        <% Transaction.create(user_id: session[:user_id], item_id: cart_items.item.id, quantity: cart_items.quantity) %>
+      <% end %>
     <td>Your total is: $<%= '%.2f' % session[:total].sum %><td>
     </tbody>
 </table>
@@ -29,4 +26,3 @@ show page for cart
 
 
   
->>>>>>> refs/remotes/origin/master

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def show
-      @transactions = Transaction.find_by(user_id: session[:user_id])
+      @transactions = Transaction.all
         @user = User.find(params[:id])
         if session[:user_id] == params[:id].to_i
           @current_user = @user

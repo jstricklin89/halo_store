@@ -9,7 +9,6 @@
         <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
         <td> <%= cart_item.text_field :quantity %> </td>
         <td> <% session[:total] << (cart_items.item.price * cart_items.quantity)  %> </td>
-        <%= Transaction.create(user_id: session[:user_id], item_id: cart_item.item.id, quantity: item.quantity) %>
         <td> <%= cart_item.submit %> </td><br>
           <%= link_to submit_tag("Delete from Cart"), cart_items, method: :delete, data: { confirm: "Really?" } %>
         <br>
