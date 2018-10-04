@@ -1,6 +1,5 @@
 <br><br>
 <%= flash[:error] %><br>
-
 <%= form_with model: User.new do |f| %>
   <%= f.text_field :username, placeholder: "Username" %>
   <%= f.text_field :nickname, placeholder: "nickname" %>
