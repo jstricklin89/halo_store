@@ -1,5 +1,5 @@
 <br>
-<%= image_tag @item.img_url, style: "float:left", class: "img-thumbnail", size: "500x500" %>
+<%= image_tag @item.img_url, style: "float:left", class: "img-thumbnail", size: "400x400" %>
 <h2><%= @item.name %></h2>
 <p><%= @item.description %></p>
 <p>$ <%= '%.2f' % (@item.price) %></p>
@@ -24,7 +24,8 @@
     </div>
   </div>
 </div>
-<br><br><br>
+<br><br>
+<br><br>
 <% @item.reviews.each do |review| %>
 <br>------------------------------------------------------------------<br>
 <br><%= review.user.nickname %>
@@ -35,3 +36,4 @@
   
 <p><%= link_to 'Back to All Items', "/items", class: "btn btn-info btn-lg" %></p>
 <br><br>
+

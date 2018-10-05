@@ -1,26 +1,31 @@
-<table>
-  <thead>
-    <tr>
-    <h2>Invoice</h2>
-      <th>Name:</th>
-      <th>Quantity:</th>
-      <th>Price:</th>
-    </tr>
-  </thead>
- <tbody> 
-<% @cart.cart_items.each do |cart_items| %>
-    <tr>
-        <td> <%= cart_items.item.name %> </td><br>
-        <td> <%= cart_items.quantity %> </td><br>
-        <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
-        </tr>
-        <% Transaction.create(user_id: session[:user_id], item_id: cart_items.item.id, quantity: cart_items.quantity) %>
-      <% end %>
-    <td>Your total is: $<%= '%.2f' % CartsController.sum(@cart)  %><td>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name:</th>
+            <th>Quantity:</th>
+            <th>Price:</th>
+          </tr>
+      </thead>
+        <tbody> 
+          <% @cart.cart_items.each do |cart_items| %>
+          <tr>
+              <td> <%= cart_items.item.name %> </td><br>
+              <td> <%= cart_items.quantity %> </td><br>
+              <td>$ <%= '%.2f' % (cart_items.item.price * cart_items.quantity) %> </td><br>
+            </tr>
+              <% Transaction.create(user_id: session[:user_id], item_id: cart_items.item.id, quantity: cart_items.quantity) %>
+            <% end %>
+          <td>Your total is: $<%= '%.2f' % CartsController.sum(@cart)  %><td>
     </tbody>
-</table>
+      </table>
+      <br>
+    </div>
+  </div><%= link_to "Checkout", @cart, method: :delete, class: "btn btn-info btn-lg" %>
+</div>
 
-<%= link_to submit_tag("Checkout"), @cart, method: :delete, class: "btn btn-info btn-lg" %>
 
 
 
