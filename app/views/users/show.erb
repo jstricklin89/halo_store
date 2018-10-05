@@ -1,44 +1,46 @@
 <% if @current_user %>
-  <h1><%= "Hey, #{@user.username}!" %></h1>
+  <br><h1><%= "Hey, #{@user.username}!" %></h1>
 
   <br><h3>My Nickname: <%= @user.nickname %></h3><br>
 
   <H4>My Secret: <%= @user.secret %><br></H4>
 
-  <br><br>
-  <%= link_to "Edit Profile", edit_user_path(@user) %><br><br>
-  <br>My Purchases:
+  <br>
+  <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-info btn-lg" %><br><br>
 
  <% if Transaction.all.include?(Transaction.find_by(user_id: session[:user_id])) %>
-  <table>
-    <thead>
-      <tr>
-        <h2>Invoices</h2>
-        <th>Item Name</th>
-        <th>Item Quantity</th>
-        <th>Item Price</th>
-      </tr>
-    </thead>
-   <tbody> 
-      <% Transaction.all.each do |item| %>
-        <% if item.user_id == session[:user_id]%>
-        <tr>
-          <td> <%= item.item.name %> </td>
-          <td> <%= item.quantity %> </td>
-          <td>$ <%= '%.2f' % (item.item.price * item.quantity) %> </td>
-        </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-  </table>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <h2>Past Purchases</h2>
+            <th>Item Name</th>
+            <th>Item Quantity</th>
+            <th>Item Price</th>
+          </tr>
+        </thead>
+      <tbody> 
+          <% Transaction.all.each do |item| %>
+            <% if item.user_id == session[:user_id]%>
+            <tr>
+              <td> <%= item.item.name %> </td>
+              <td> <%= item.quantity %> </td>
+              <td>$ <%= '%.2f' % (item.item.price * item.quantity) %> </td>
+            </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+      </table>
+      <br><%= button_to "Logout", '/sessions', method: :delete, class: "btn btn-info btn-lg" %>
+    </div>
+  </div>
+</div>
   <% else %>
     <%= "You have no transactions" %>
   <% end %>
 
-
-
-
-  <%= button_to "Logout", '/sessions', method: :delete %>
 <% else %>
   Access Denied
 <% end %>

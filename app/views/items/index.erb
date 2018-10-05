@@ -1,24 +1,23 @@
-<h1>Shop Halo Online Store</h1>
-<br/>
+<br><h1>Shop Halo Online Store</h1>
   <thead>
     <tr>
-      <h2>All Items</h2>
-      <h4><%= link_to "Go back to all Items", '/items' %></h4><br>
+      <h2>All Items</h2><br>
 
 <%= form_tag items_path, method: :get do %>
   <b><%= label_tag :name, "Search item name:" %></b>
   <br>
   <%= search_field_tag :name %>
-  <%= submit_tag 'Search' %>
+  <%= submit_tag 'Search', class: "btn btn-info btn-lg" %>
 <% end %>
 
 <%= form_tag("/search", method: "get") do %>
-      <%= label_tag("Search by Category:") %>
+      <b><%= label_tag :category, "Search by Category:" %></b>
+      <br>
       <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
-      <%= submit_tag("Search") %>
+      <%= submit_tag "Search", class: "btn btn-info btn-lg" %>
 <% end %>
 
-    <div>
+  <br><div>
   <% @items.each do |item| %>
     <h3><%= link_to item.name, item_path(item) %></h3>
     <h4><%= item.category.name %></h4>
@@ -29,8 +28,6 @@
     
     </div> 
 </table>
-
-# push item into cart
 
 
 

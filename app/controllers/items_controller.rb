@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
             @items = Item.select {|item| item.name.downcase.include?(params[:name].downcase)}
         else
             @items = Item.all
-            
         end
     end
 
@@ -15,6 +14,7 @@ class ItemsController < ApplicationController
 
     def show
         @item = Item.find(params[:id])
+        @review = Review.new
     end
 
     def search

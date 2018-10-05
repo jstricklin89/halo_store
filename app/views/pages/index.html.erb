@@ -1,14 +1,6 @@
-<br>
-<% if session[:username] != nil%>
-<h1>Hello, <%= session[:username] %>.</h1>
-  <input type=submit value='logout'>
-<% else %>
-<br>
-<br>
-<% end %>
 <br><br>
 <div class="text-center">
-  <h3>Most Popular Choice:</h3>
+  <h3>Most Popular Product:</h3>
   <% arr = Transaction.all %> 
   <% freq = arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h } %>
   <% item = freq.max_by { |_, v| v }.first.item %>
