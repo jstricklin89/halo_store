@@ -1,5 +1,6 @@
 <br>
-<%= image_tag @item.img_url, class: "img-fluid" %>
+
+<%= image_tag @item.img_url, :size => '500x500' %>
 <h2><%= @item.name %></h2>
 <p><%= @item.description %></p>
 <p>$ <%= '%.2f' % (@item.price) %></p>

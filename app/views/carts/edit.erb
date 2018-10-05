@@ -10,13 +10,10 @@
         <td> <%= cart_item.text_field :quantity %> </td>
         <td> <%= cart_item.submit %> </td><br>
           <%= link_to submit_tag("Delete from Cart"), cart_items, method: :delete, data: { confirm: "Really?" } %>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
       <% end %>
     <% end %>   
-        <%= link_to submit_tag("Checkout"), @cart, method: :get %>
-        
+<%= link_to submit_tag("Checkout"), @cart, method: :get %>  
 </tr>
 <br><%= link_to submit_tag("Delete all from Cart"), @cart, method: :delete, data: { confirm: "Really?" } %>  
 <br>
