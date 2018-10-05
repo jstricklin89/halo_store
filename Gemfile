@@ -31,6 +31,9 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap_form'
 
+gem 'pg'
+gem 'taps'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
